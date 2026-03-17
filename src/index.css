@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366f1;
+  --color-secondary: #0f0a1e;
+}
+
+:root {
+  --bg-primary: #faf8ff;
+  --bg-secondary: #f0edff;
+  --bg-tertiary: #e8e4f8;
+  --text-primary: #1a1035;
+  --text-secondary: #5c5478;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-light: #818cf8;
+  --gradient-start: #6366f1;
+  --gradient-mid: #8b5cf6;
+  --gradient-end: #06b6d4;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(99, 102, 241, 0.15);
+  --glow-color: rgba(99, 102, 241, 0.4);
+  --card-shadow: 0 8px 32px rgba(99, 102, 241, 0.08);
+  --card-shadow-hover: 0 16px 48px rgba(99, 102, 241, 0.18);
+}
+
+.dark {
+  --bg-primary: #0a0a1a;
+  --bg-secondary: #111128;
+  --bg-tertiary: #1a1a3e;
+  --text-primary: #f0eeff;
+  --text-secondary: #a5a0c8;
+  --accent: #818cf8;
+  --accent-hover: #a5b4fc;
+  --accent-light: #c4b5fd;
+  --gradient-start: #818cf8;
+  --gradient-mid: #a78bfa;
+  --gradient-end: #22d3ee;
+  --glass-bg: rgba(17, 17, 40, 0.7);
+  --glass-border: rgba(129, 140, 248, 0.2);
+  --glow-color: rgba(129, 140, 248, 0.5);
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 16px 48px rgba(129, 140, 248, 0.15);
+}
+
+/* ─── Base ──────────────────────────────────────────────────── */
+
+* {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition-property: color, background-color;
+  transition-duration: 300ms;
+  overflow-x: hidden;
+}
+
+/* ─── Gradient Text ─────────────────────────────────────────── */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glassmorphism Card ────────────────────────────────────── */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--card-shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+/* ─── Glow Button ───────────────────────────────────────────── */
+
+.glow-button {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid));
+  color: white;
+  font-weight: 600;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.22);
+}
+
+.glow-button:hover {
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.28);
+  transform: translateY(-1px);
+}
+
+.glow-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.12), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.glow-button:hover::after {
+  transform: translateX(100%);
+}
+
+/* ─── Gradient Outline Button ───────────────────────────────── */
+
+.gradient-outline-btn {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.3s ease;
+}
+
+.gradient-outline-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  z-index: -1;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-outline-btn:hover::before {
+  opacity: 1;
+}
+
+.gradient-outline-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ─── Section Divider ───────────────────────────────────────── */
+
+.gradient-divider {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-divider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* ─── Floating Orbs ─────────────────────────────────────────── */
+
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.dark .floating-orb {
+  opacity: 0.15;
+}
+
+.floating-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #6366f1, #a78bfa);
+  top: 10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.floating-orb-2 {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  top: 60%;
+  right: -8%;
+  animation-delay: -3s;
+}
+
+.floating-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #ec4899, #6366f1);
+  bottom: 10%;
+  left: 20%;
+  animation-delay: -5s;
+}
+
+/* ─── Gradient Accent Bar ───────────────────────────────────── */
+
+.gradient-accent-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  background-size: 200% auto;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* ─── Gradient Tag ──────────────────────────────────────────── */
+
+.gradient-tag {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid));
+  color: white;
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+/* ─── Glass Input ───────────────────────────────────────────── */
+
+.glass-input {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--glow-color);
+  outline: none;
+}
+
+/* ─── Gradient Icon Box ─────────────────────────────────────── */
+
+.gradient-icon-box {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid));
+  color: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px var(--glow-color);
+}
+
+.gradient-icon-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px var(--glow-color);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gradient-start), var(--gradient-mid));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gradient-mid), var(--gradient-end));
+}
+
+/* ─── Selection ─────────────────────────────────────────────── */
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────── */
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px var(--glow-color); }
+  50% { box-shadow: 0 0 40px var(--glow-color), 0 0 60px rgba(99, 102, 241, 0.2); }
+}
