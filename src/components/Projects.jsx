@@ -23,17 +23,17 @@ const projectsData = [
         imageAlt: 'Students collaborating with books and laptops around a table.'
     },
     {
-        title: 'Video Converter Platform',
-        period: "Jan '26",
-        description: 'A distributed media processing system built on AWS EKS for reliable asynchronous video conversion at scale.',
-        objective: 'Handle heavy media conversion jobs with resilience and scalability.',
-        implementation: 'Microservices on Kubernetes with RabbitMQ queues, retries, and persistent storage.',
-        impact: 'Improves reliability and user experience by keeping conversion processing non-blocking.',
-        techStack: ['AWS EKS', 'Kubernetes', 'Docker', 'RabbitMQ', 'Python', 'PostgreSQL'],
-        github: '#',
-        live: '#',
-        image: 'https://images.unsplash.com/photo-1626544827763-d516dce335e2?auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Video editing timeline shown on a monitor.'
+  title: 'Three-Tier Microservices Architecture',
+  period: "Mar'26",
+  description: 'A cloud-based three-tier microservices application deployed on AWS EKS using containerization and orchestration.',
+  objective: 'Build a scalable and reliable system to understand real-world DevOps deployment and microservices architecture.',
+  implementation: 'Services were containerized using Docker and deployed on Kubernetes (EKS) with Helm charts and YAML configurations, along with basic CI/CD using GitHub Actions.',
+  impact: 'Improves system scalability, reliability, and simplifies deployment management using DevOps practices.',
+  techStack: ['AWS EKS', 'Kubernetes', 'Docker', 'Helm', 'GitHub Actions'],
+  github: 'https://github.com/Nigamjanhvi/three-tier-architecture-EKS',
+  live: '#',
+  image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1200&q=80',
+  imageAlt: 'Cloud infrastructure and Kubernetes deployment visualization.'
     },
     {
         title: 'Server Performance Monitoring Tool',
